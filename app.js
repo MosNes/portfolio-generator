@@ -1,15 +1,25 @@
-const fs = require('fs');
-const generatePage = require('./src/page-template');
+const inquirer = require('inquirer');
 
-//gets the arguments provided to the command line, minus the first two args (which are just the file paths to node and the app itself)
-const profileDataArgs = process.argv.slice(2, process.argv.length);
 
-//gets the first two items in the profileDataArgs array and assigns them to name and github
-const [name, github] = profileDataArgs;
 
-//creates the html file, throws an error if there's a problem
-fs.writeFile('index.html',generatePage(name,github),err => {
-    if (err) throw err;
+// const fs = require('fs');
+// const generatePage = require('./src/page-template');
 
-    console.log('Portfolio Complete! Check out index.html to see the output!');
-});
+// const pageHTML = generatePage(name, github);
+
+// //creates the html file, throws an error if there's a problem
+// fs.writeFile('./index.html', pageHTML,err => {
+//     if (err) throw err;
+
+//     console.log('Portfolio Complete! Check out index.html to see the output!');
+// });
+
+inquirer
+    .prompt([
+        {
+            type: 'input',
+            name: 'name5',
+            message:    'What is your name?'
+        }
+    ])
+    .then(answers => console.log(answers));
