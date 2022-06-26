@@ -38,15 +38,28 @@ const promptUser = () => {
                     if (nameinput) {
                         return true;
                     } else {
-                        console.log('Please enter your name!');
+                        console.log('Please enter your GitHub username!');
                         return false;
                     }
                 }
             },
             {
+                type: 'confirm',
+                name: 'confirmAbout',
+                message: 'Would you like to enter some information about yourself for an "About" section?',
+                default: true
+            },
+            {
                 type: 'input',
                 name: 'about',
-                message: 'Provide some information about yourself:'
+                message: 'Provide some information about yourself',
+                when: ({ confirmAbout }) => {
+                    if (confirmAbout) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
             }
         ]);
 };
@@ -56,8 +69,8 @@ const promptProject = portfolioData => {
     //initializes portfolioData.projects as an empty array if it doesn't already exist
     if (!portfolioData.projects) {
         portfolioData.projects = [];
-      }
-    
+    }
+
     console.log(`
     =================
     Add a new Project
@@ -72,7 +85,7 @@ const promptProject = portfolioData => {
                 if (nameinput) {
                     return true;
                 } else {
-                    console.log('Please enter your name!');
+                    console.log('Please enter a project name!');
                     return false;
                 }
             }
@@ -85,7 +98,7 @@ const promptProject = portfolioData => {
                 if (nameinput) {
                     return true;
                 } else {
-                    console.log('Please enter your name!');
+                    console.log('Please enter the project description!');
                     return false;
                 }
             }
@@ -94,7 +107,7 @@ const promptProject = portfolioData => {
             type: 'checkbox',
             name: 'languages',
             message: 'What did you build this project wiwth? (Check all that apply)',
-            choices: ['JavaScript','HTML','CSS','jQuery','Boostrap','Node']
+            choices: ['JavaScript', 'HTML', 'CSS', 'jQuery', 'Boostrap', 'Node']
         },
         {
             type: 'input',
@@ -104,7 +117,7 @@ const promptProject = portfolioData => {
                 if (nameinput) {
                     return true;
                 } else {
-                    console.log('Please enter your name!');
+                    console.log('Please enter your a valid link!');
                     return false;
                 }
             }
@@ -133,8 +146,8 @@ const promptProject = portfolioData => {
 };
 
 promptUser()
-.then(promptProject)
-.then(portfolioData => {
-    console.log(portfolioData);
-});
+    .then(promptProject)
+    .then(portfolioData => {
+        console.log(portfolioData);
+    });
 
