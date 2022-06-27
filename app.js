@@ -3,6 +3,9 @@ const inquirer = require('inquirer');
 const fs = require('fs');
 const generatePage = require('./src/page-template');
 
+//uses object destructuring to just grab the two functions from this file instead of having to use dot notation
+const { writeFile, copyFile } = require('./utils/generate-site.js');
+
 const mockData = {
     name: 'Lernantino',
     github: 'lernantino',

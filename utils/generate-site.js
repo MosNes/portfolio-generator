@@ -38,3 +38,4 @@ const copyFile = fileContent => {
     });
 };
 
+module.exports = { writeFile, copyFile };
